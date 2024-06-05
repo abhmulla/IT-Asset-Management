@@ -1,0 +1,34 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Management System</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Add other CSS files or JS files here -->
+</head>
+<body>
+    <header>
+        <h1>Asset Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'asset_list' %}">Home</a></li>
+                <li><a href="{% url 'add_asset' %}">Add Asset</a></li>
+                <li><a href="{% url "network_scan" %}"> Scan Network</a></li>
+                <li><a href="{% url "generate_report" %}"> Generate Report</a></li>
+                <!-- Add other navigation links here -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Asset Management System</p>
+    </footer>
+</body>
+</html>

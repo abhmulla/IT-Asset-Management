@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Add New Asset</h2>
+    <form method="post" id="asset-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div id="new-asset-type-container" style="display:none;">
+            <label for="new_asset_type">New Asset Type:</label>
+            <input type="text" id="new_asset_type" name="new_asset_type">
+        </div>
+        <button type="submit">Save</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const assetTypeSelect = document.getElementById('id_asset_type');
+            const newAssetTypeContainer = document.getElementById('new-asset-type-container');
+            const newAssetTypeInput = document.getElementById('new_asset_type');
+
+            // Add the "Add new asset type" option to the select field
+            const newOption = document.createElement('option');
+            newOption.value = 'add_new';
+            newOption.text = 'Add new asset type';
+            assetTypeSelect.appendChild(newOption);
+
+            assetTypeSelect.addEventListener('change', function() {
+                if (assetTypeSelect.value === 'add_new') {
+                    newAssetTypeContainer.style.display = 'block';
+                    newAssetTypeInput.required = true;
+                } else {
+                    newAssetTypeContainer.style.display = 'none';
+                    newAssetTypeInput.required = false;
+                }
+            });
+        });
+    </script>
+{% endblock %}
+

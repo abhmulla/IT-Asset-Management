@@ -1,0 +1,11 @@
+<!-- templates/assets/asset_form.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{ form.instance.id|yesno:"Edit,Add" }} Asset</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

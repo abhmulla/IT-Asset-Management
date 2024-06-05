@@ -1,0 +1,11 @@
+<!-- templates/assets/asset_list.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Asset Types</h2>
+    <ul>
+        {% for asset_type in asset_types %}
+            <li><a href="{% url 'specific_assets' asset_type.id %}">{{ asset_type.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

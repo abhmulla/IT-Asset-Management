@@ -1,0 +1,13 @@
+<!-- templates/assets/asset_detail.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Asset Detail: {{ asset.name }}</h2>
+    <p>Type: {{ asset.asset_type.name }}</p>
+    <p>Specific Type: {{ asset.specific_type }}</p>
+    <p>Cost: {{ asset.cost }}</p>
+    <p>Units: {{ asset.units }}</p>
+    <p>Status: {{ asset.status }}</p>
+    <p>Notes: {{ asset.notes }}</p>
+    <a href="{% url 'edit_asset' asset.id %}">Edit</a>
+{% endblock %}
